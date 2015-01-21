@@ -43,3 +43,10 @@ None of which are really required to run Lunarized but will be necessary if you'
 Basically merge a lot of Ethan Schoonover's Solarized components into one repository, write the files like you would if you were going to drop in stuff (or let a script do that for you), and unf##k a lot of stuff Solarize f##ks with.
 
 I just want to see the screen again.
+
+## What did you merge into this project?
+
+* [Solarized’s xresources](https://github.com/solarized/xresources)
+* [Solarized’s tmux-solarized](https://github.com/solarized/tmux-colors-solarized)
+
+I’m pretty sure these are the two repos I need to undo the damage done.
