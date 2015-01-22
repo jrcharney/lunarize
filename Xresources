@@ -1,71 +1,106 @@
-! Solarized color scheme for the X Window System
-!
-! http://ethanschoonover.com/solarized
+! Lunarize color scheme for the X Window System
+! https://github.com/jrcharney/lunarize
+! NOTE: Do not use apostrophies in this file.
+URxvt*termName: screen-256color
+
+! Before we fix our colors, let us fix this issue with the Home and End keys in URXVT and RXVT
+URxvt*keysym.Home: \033[1~
+URxvt*keysym.End:  \033[4~
+
+! Do not blink when we hit something
 
 
-! Common
+! Default Terminal Colors (basically your standard terminal colors)
+! These are the colors you should use if you are using IRSSI or Weechat
 
-#define S_yellow        #b58900
-#define S_orange        #cb4b16
-#define S_red           #dc322f
-#define S_magenta       #d33682
-#define S_violet        #6c71c4
-#define S_blue          #268bd2
-#define S_cyan          #2aa198
-#define S_green         #859900
+#define term_background		#222222
+#define term_foreground		#dfdfdf
 
-
-! Dark
-
-#define S_base03        #002b36
-#define S_base02        #073642
-#define S_base01        #586e75
-#define S_base00        #657b83
-#define S_base0         #839496
-#define S_base1         #93a1a1
-#define S_base2         #eee8d5
-#define S_base3         #fdf6e3
-
-
-! Light
-
-! #define S_base03        #fdf6e3
-! #define S_base02        #eee8d5
-! #define S_base01        #93a1a1
-! #define S_base00        #839496
-! #define S_base0         #657b83
-! #define S_base1         #586e75
-! #define S_base2         #073642
-! #define S_base3         #002b36
+#define term_dark_black		#000000
+#define term_dark_red		#cd0000
+#define term_dark_green		#00cd00
+#define term_dark_yellow	#cdcd00
+#define term_dark_blue		#0000cd
+#define term_dark_magenta	#cd00cd
+#define term_dark_cyan		#00cdcd
+#define term_dark_white		#e5e5e5
+#define term_light_black	#4d4d4d
+#define term_light_red		#ff0000
+#define term_light_green	#00ff00
+#define term_light_yellow	#ffff00
+#define term_light_blue		#0000ff
+#define term_light_magenta	#ff00ff
+#define term_light_cyan		#00ffff
+#define term_light_white	#ffffff
 
 
+! ! Common
+! 
+! #define S_yellow        #b58900
+! #define S_orange        #cb4b16
+! #define S_red           #dc322f
+! #define S_magenta       #d33682
+! #define S_violet        #6c71c4
+! #define S_blue          #268bd2
+! #define S_cyan          #2aa198
+! #define S_green         #859900
+! 
+! 
+! ! Dark
+! 
+! #define S_base03        #002b36
+! #define S_base02        #073642
+! #define S_base01        #586e75
+! #define S_base00        #657b83
+! #define S_base0         #839496
+! #define S_base1         #93a1a1
+! #define S_base2         #eee8d5
+! #define S_base3         #fdf6e3
+! 
+! 
+! ! Light
+! 
+! ! #define S_base03        #fdf6e3
+! ! #define S_base02        #eee8d5
+! ! #define S_base01        #93a1a1
+! ! #define S_base00        #839496
+! ! #define S_base0         #657b83
+! ! #define S_base1         #586e75
+! ! #define S_base2         #073642
+! ! #define S_base3         #002b36
+ 
 ! To only apply colors to your terminal, for example, prefix
 ! the color assignment statement with its name. Example:
 !
 ! URxvt*background:            S_base03
+ 
+! URxvt*transparent: true
+! URxvt*shading: 20
+! URxvt*fading: 90
 
-*background:              S_base03
-*foreground:              S_base0
-*fading:                  40
-*fadeColor:               S_base03
-*cursorColor:             S_base1
-*pointerColorBackground:  S_base01
-*pointerColorForeground:  S_base1
+URxvt*background:              term_background
+URxvt*foreground:              term_foreground
 
-*color0:                  S_base02
-*color1:                  S_red
-*color2:                  S_green
-*color3:                  S_yellow
-*color4:                  S_blue
-*color5:                  S_magenta
-*color6:                  S_cyan
-*color7:                  S_base2
-*color8:                  S_base03
-*color9:                  S_orange
-*color10:                 S_base01
-*color11:                 S_base00
-*color12:                 S_base0
-*color13:                 S_violet
-*color14:                 S_base1
-*color15:                 S_base3
+! *fading:                  40
+! *fadeColor:               S_base03
+! *cursorColor:             S_base1
+! *pointerColorBackground:  S_base01
+! *pointerColorForeground:  S_base1
+ 
+*color0:                  term_dark_black
+*color1:                  term_dark_red
+*color2:                  term_dark_green
+*color3:                  term_dark_yellow
+*color4:                  term_dark_blue
+*color5:                  term_dark_magenta
+*color6:                  term_dark_cyan
+*color7:                  term_dark_white
+*color8:                  term_light_black
+*color9:                  term_light_red
+*color10:                 term_light_green
+*color11:                 term_light_yellow
+*color12:                 term_light_blue
+*color13:                 term_light_magenta
+*color14:                 term_light_cyan
+*color15:                 term_light_white
 
