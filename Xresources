@@ -13,7 +13,8 @@ URxvt*keysym.End:  \033[4~
 ! Default Terminal Colors (basically your standard terminal colors)
 ! These are the colors you should use if you are using IRSSI or Weechat
 
-#define term_background		#222222
+! #define term_background		#222222
+#define term_background		[30]#000000
 #define term_foreground		#dfdfdf
 
 #define term_dark_black		#000000
@@ -33,60 +34,48 @@ URxvt*keysym.End:  \033[4~
 #define term_light_cyan		#00ffff
 #define term_light_white	#ffffff
 
+! Fake transparency.
+! Use this if you do not have a compositor.
+! Fake transparency will show the wallpaper at the desktop level
+! but not any of the windows underneath. You will need real transparency for that.
+! Do not use shading, use fading for transparency.
+! You also cannot use shading if a tintcolor is set.
+urxvt*transparent: true
+urxvt*shading: 30
 
-! ! Common
-! 
-! #define S_yellow        #b58900
-! #define S_orange        #cb4b16
-! #define S_red           #dc322f
-! #define S_magenta       #d33682
-! #define S_violet        #6c71c4
-! #define S_blue          #268bd2
-! #define S_cyan          #2aa198
-! #define S_green         #859900
-! 
-! 
-! ! Dark
-! 
-! #define S_base03        #002b36
-! #define S_base02        #073642
-! #define S_base01        #586e75
-! #define S_base00        #657b83
-! #define S_base0         #839496
-! #define S_base1         #93a1a1
-! #define S_base2         #eee8d5
-! #define S_base3         #fdf6e3
-! 
-! 
-! ! Light
-! 
-! ! #define S_base03        #fdf6e3
-! ! #define S_base02        #eee8d5
-! ! #define S_base01        #93a1a1
-! ! #define S_base00        #839496
-! ! #define S_base0         #657b83
-! ! #define S_base1         #586e75
-! ! #define S_base2         #073642
-! ! #define S_base3         #002b36
- 
+! Real transparency.
+! Use this if you have a compositor or compositing (window) manager.
+! Real transparency will not work if a compositor like Kwin or Compiz is used.
+! If you want real transparency to work give Xfce or Fluxbox a try.
+! urxvt*depth: 32
+! urxvt*background: rgba:0000/0000/0000/c800
+! urxvt*background: [90]#000000
+
+! Fading is for unfocused windows.
+! You should set it to a low setting or else windows are too dark to see.
+URxvt*fading: 20
+
+! Set borderless to true if you do not want the gui container.
+! You will likely want to preset the location of the window if you do
+! and what application to run (i.e. conkey)
+URxvt*borderLess: false
+
+! Set inheritpixmap to true to use the parent background window pixmap
+! Basically use the background image of the parent process.
+! That being the desktop wallpaper.
+! A transparency method should be enabled if you want to use this effectively.
+URxvt*inheritPixmap: true
+
 ! To only apply colors to your terminal, for example, prefix
 ! the color assignment statement with its name. Example:
 !
-! URxvt*background:            S_base03
+! URxvt*background:            term_background
  
-! URxvt*transparent: true
-! URxvt*shading: 20
-! URxvt*fading: 90
-
+! background and foreground colors
 URxvt*background:              term_background
 URxvt*foreground:              term_foreground
 
-! *fading:                  40
-! *fadeColor:               S_base03
-! *cursorColor:             S_base1
-! *pointerColorBackground:  S_base01
-! *pointerColorForeground:  S_base1
- 
+! Sixteen colors for terminals.
 *color0:                  term_dark_black
 *color1:                  term_dark_red
 *color2:                  term_dark_green
