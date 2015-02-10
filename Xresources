@@ -1,20 +1,31 @@
 ! Lunarize color scheme for the X Window System
 ! https://github.com/jrcharney/lunarize
 ! NOTE: Do not use apostrophies in this file.
-URxvt*termName: screen-256color
+
+! Chose a terminal.
+! Initially we wanted to use screen-256color, but colors would not render.
+! URxvt*termName: screen-256color
+! URxvt*termName: rxvt-256color
+URxvt*termName: rxvt-unicode-256color
+
 
 ! Before we fix our colors, let us fix this issue with the Home and End keys in URXVT and RXVT
 URxvt*keysym.Home: \033[1~
 URxvt*keysym.End:  \033[4~
 
 ! Do not blink when we hit something
-
+URxvt*visualBell: false
 
 ! Default Terminal Colors (basically your standard terminal colors)
 ! These are the colors you should use if you are using IRSSI or Weechat
 
 ! #define term_background		#222222
-#define term_background		[30]#000000
+
+! Do not define the background like this. It screws up the appearance when
+! black needs to appear on white.
+! #define term_background		[30]#000000
+
+#define term_background		#000000
 #define term_foreground		#dfdfdf
 
 #define term_dark_black		#000000
@@ -33,6 +44,17 @@ URxvt*keysym.End:  \033[4~
 #define term_light_magenta	#ff00ff
 #define term_light_cyan		#00ffff
 #define term_light_white	#ffffff
+
+! Turn scrollbars off
+URxvt.scrollBar: false
+
+! Set the geometry of the window.  If we do not do this, 80x25 will be used.
+URxvt*geometry: 96x30
+
+! Start as a login shell by prepending a hyphen to argv[0].
+! This is helpful for tmux and causes bash login files like ~/.bash_profile to be loaded.
+URxvt*loginShell: true
+
 
 ! Fake transparency.
 ! Use this if you do not have a compositor.
@@ -74,6 +96,8 @@ URxvt*inheritPixmap: true
 ! background and foreground colors
 URxvt*background:              term_background
 URxvt*foreground:              term_foreground
+! URxvt*highlightTextColor:      term_dark_black
+! URxvt*highlightColor:          term_light_white
 
 ! Sixteen colors for terminals.
 *color0:                  term_dark_black
@@ -93,3 +117,70 @@ URxvt*foreground:              term_foreground
 *color14:                 term_light_cyan
 *color15:                 term_light_white
 
+
+! For these plugins use https://github.com/muennich/urxvt-perls for guidance, not the Arch Wiki page.
+! For all three urxvt-perls plugins, let us set the perl extention directory.
+URxvt.perl-lib: ~/.urxvt/ext/
+! set which plugins to use.
+URxvt.perl-ext: clipboard,keyboard-select,url-select
+
+! keyboard-select
+! Use keyboard shortcuts to select and copy text.
+! TODO: Should I consider: M-c for keyboard select?
+URxvt.keysym.M-Escape: perl:keyboard-select:activate
+! Use the following line to overwrites the default Meta-s binding
+! and allows to activate keyboard-select directly in backward search mode.
+! I am not keen about this command.
+URxvt.keysym.M-s: perl:keyboard-select:search
+
+! url-select
+! Use keyboard shortcuts to select URLs.
+! This should be used as a replacement for the default matcher extension,
+! it also makes URLs clickable with the middle mouse button.
+! Hopefully we can use right click instead.
+! As much as I detest using the mouse, when you click on URLs, it makes sense.
+URxvt.keysym.M-u: perl:url-select:select_next
+! Select which program to handle urls.
+! Alternatively, we could use /usr/bin/firefox
+URxvt.url-select.launcher: /usr/bin/xdg-open
+! use a mouse button to click-open urls. The default is 2 (right click)
+! TODO: can I shift+left click to do this?
+URxvt.url-select.button:2
+! under line any urls.
+! TODO: Is there an option to do this on hover?
+URxvt.url-select.underline: true
+! Set the color for underline text.
+! Most people just set this to yellow if on a black background.
+! Blue on a white background.
+URxvt.colorUL: #ffff00
+! Set the color for the underline itself.  If not set, it will use the foreground color.
+URxvt*underlineColor: #ffff00
+
+! clipboard
+! Use keyboard shortcuts to copy the selection to the clipboard 
+! and to paste the clipboard contents (optionally escaping all special characters).
+! Me gusta.
+URxvt.keysym.M-c:   perl:clipboard:copy
+URxvt.keysym.M-v:   perl:clipboard:paste
+URxvt.keysym.M-C-v: perl:clipboard:paste_escaped
+! The default copy and paste clipboard commands URXVT usrs 
+! URxvt.clipboard.copycmd:  xsel -ib
+! URxvt.clipboard.pastecmd: xsel -ob
+
+! Changing the font
+! Using Liberation Mono for Powerline.
+! I have noticed things are a little more wider than usual.
+URxvt*font:            xft:Droid Sans Mono for Powerline:size=10
+URxvt*boldFont:        xft:Droid Sans Mono for Powerline:bold:size=10
+URxvt*italicFont:      xft:Droid Sans Mono for Powerline:italic:autohint=true:size=10
+URxvt*boldItalicFont:  xft:Droid Sans Mono for Powerline:bold:italic:autohint=true:size=10
+
+! Decrease the letter spacing by 1 pixel.
+URxvt.letterSpace: -1
+
+! More Xft stuff
+Xft.dpi: 96
+Xft.antialias: true
+Xft.rgba: rgb
+Xft.hinting:true
+Xft.hintstyle: hintslight

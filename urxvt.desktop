@@ -1,0 +1,15 @@
+# File: urxvt.desktop
+# Author: Jason Charney (jrcharneyATgmailDOTcom)
+# Info: A desktop shortcut for URXVT.
+# Date: 30 Jan 2015
+# TODO: Make an icon for this application.
+[Desktop Entry]
+Name=URXVT
+Comment=Unicode ouR eXtended Virtual Terminal
+Exec=urxvt
+Terminal=false
+Type=Application
+Version=9.21
+Encoding=UTF-8
+Icon=xterm-color_48x48
+Categories=System;TerminalEmulator;

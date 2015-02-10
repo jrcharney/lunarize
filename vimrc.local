@@ -1,0 +1,74 @@
+" File: ~/.vimrc.local
+" Info: This file should be used to set the user defined preferences that will
+" take precedence over ~/.vimrc
+"
+" TODO:
+"  [ ] Revert all chages to ~/.vimrc and move them to this file.
+"  [ ] Change the colorscheme
+"  [ ] Disable whatever it is that spf13 uses that makes special quotes happen  in text files.
+"  [ ] Disable the word-wraping that is clearly happening in this noted  documentation!
+"  [ ] Enable the HOME and END keys. For some reason SPF13 doesn't use them.
+"  [ ] Disable whatever this "V-Line" thing is.  I'm pretty sure it enables  visible block mode. Set it back to what it used to be.
+"
+
+" Basic Settings {
+set nocompatible				" Must be the first setting set.
+set shell=/bin/bash				" Set the shell to bash.
+" }
+
+" General Settings {
+" set background=dark				" set the background to dark
+filetype plugin indent on		" Automatically detect file types 
+syntax on						" Enable syntax highlighting
+set mouse=""					" Disable the mouse, I hope.
+set mousehide					" Hide the cursor while typing
+scriptencoding utf-8
+" }
+
+" Vim UI {
+" color solarized				" use this to set the colorscheme later.
+colorscheme jellybeans
+" colorscheme default
+set background=dark
+
+set tabpagemax=15				" Allow for up to 15 tabs to be open in a session.  This could be changed.
+
+set showmode					" Show the current mode in the status line.
+set cursorline					" Highlight the current line.
+
+highlight Normal ctermbg=none
+highlight NonText ctermbg=none
+highlight clear SignColumn		" Signcolumn should match the background
+highlight clear LineNr			" Current line number row will have the same background color in relative mode
+" highlight clear CursorLineNr	" Remove highlight color from current line number. (Let's keep it!)
+highlight CursorLine term=bold cterm=bold ctermbg=none guibg=none	" Grey40
+highlight CursorLineNr term=bold cterm=bold ctermfg=yellow ctermbg=none guibg=none
+
+set nu							" Show the line number.
+set noincsearch					" Do not highlight search as your type. (REGEX FTW!)
+set nolist						" Don't show listchars.		(TODO: find out what the listchars setting is really used for.)
+" }
+
+" Formatting {
+set wrap						" Wrap long lines. (TODO: check  wrapmargin and wrapscan and see if they have any influence)
+set noexpandtab					" Do not expand tabs to spaces
+" }
+
+" The following lines should get vim-airline (https://github.com/bling/vim-airline) working.
+" NOTE: Be sure to install the powerline fonts (https://github.com/powerline/fonts) and to use the fonts that have 'for Powerline' in them.
+" let g:airline_powerline_fonts = 1
+if !exists('g:airline_symbols')
+ let g:airline_symbols = {}
+endif
+
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+let g:airline_symbols.branch = ''
+let g:airline_symbols.readonly = ''
+let g:airline_symbols.linenr = ''
+
+" let g:airline#extensions#tabline#enabled = 1
+" let g:airline#extensions#tabline#left_sep = ' '
+" let g:airline#extensions#tabline#left_alt_sep = '|'
