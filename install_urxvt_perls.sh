@@ -1,4 +1,9 @@
 #!/bin/bash
+# File: install_urxvt_perls.sh
+# Author: Jason Charney (jrcharneyATgmailDOTcom, https://github.com/jrcharney/)
+# Date: 10 Feb 2015
+# Info: Install Bert Münnich's urxvt-perls using this interactive script.
+# WISHLIST: Install perl, urxvt, and xsel like this too.
 
 echo "Hello! I will install Bert Münnich's urxvt-perls."
 echo "Using these will allow you to copy and paste using"
