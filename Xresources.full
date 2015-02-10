@@ -117,6 +117,56 @@ URxvt*foreground:              term_foreground
 *color14:                 term_light_cyan
 *color15:                 term_light_white
 
+
+! For these plugins use https://github.com/muennich/urxvt-perls for guidance, not the Arch Wiki page.
+! For all three urxvt-perls plugins, let us set the perl extention directory.
+URxvt.perl-lib: ~/.urxvt/ext/
+! set which plugins to use.
+URxvt.perl-ext: clipboard,keyboard-select,url-select
+
+! keyboard-select
+! Use keyboard shortcuts to select and copy text.
+! TODO: Should I consider: M-c for keyboard select?
+URxvt.keysym.M-Escape: perl:keyboard-select:activate
+! Use the following line to overwrites the default Meta-s binding
+! and allows to activate keyboard-select directly in backward search mode.
+! I am not keen about this command.
+URxvt.keysym.M-s: perl:keyboard-select:search
+
+! url-select
+! Use keyboard shortcuts to select URLs.
+! This should be used as a replacement for the default matcher extension,
+! it also makes URLs clickable with the middle mouse button.
+! Hopefully we can use right click instead.
+! As much as I detest using the mouse, when you click on URLs, it makes sense.
+URxvt.keysym.M-u: perl:url-select:select_next
+! Select which program to handle urls.
+! Alternatively, we could use /usr/bin/firefox
+URxvt.url-select.launcher: /usr/bin/xdg-open
+! use a mouse button to click-open urls. The default is 2 (right click)
+! TODO: can I shift+left click to do this?
+URxvt.url-select.button:2
+! under line any urls.
+! TODO: Is there an option to do this on hover?
+URxvt.url-select.underline: true
+! Set the color for underline text.
+! Most people just set this to yellow if on a black background.
+! Blue on a white background.
+URxvt.colorUL: #ffff00
+! Set the color for the underline itself.  If not set, it will use the foreground color.
+URxvt*underlineColor: #ffff00
+
+! clipboard
+! Use keyboard shortcuts to copy the selection to the clipboard 
+! and to paste the clipboard contents (optionally escaping all special characters).
+! Me gusta.
+URxvt.keysym.M-c:   perl:clipboard:copy
+URxvt.keysym.M-v:   perl:clipboard:paste
+URxvt.keysym.M-C-v: perl:clipboard:paste_escaped
+! The default copy and paste clipboard commands URXVT usrs 
+! URxvt.clipboard.copycmd:  xsel -ib
+! URxvt.clipboard.pastecmd: xsel -ob
+
 ! Changing the font
 ! Using Liberation Mono for Powerline.
 ! I have noticed things are a little more wider than usual.
